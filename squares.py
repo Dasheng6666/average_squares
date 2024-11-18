@@ -53,10 +53,16 @@ def convert_numbers(list_of_strings):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Calculate the weighted average of squares of numbers.")
     parser.add_argument("numbers", nargs="+", help="A sequence of numbers", type=float)
+    parser.add_argument(
+        "--weights",
+        nargs="+",
+        type=float,
+        help="Optional weights for the numbers (must match the length of numbers).",
+    )
     args = parser.parse_args()
     
     numbers = args.numbers
-    weights = None
+    weights = args.weights
     
     result = average_of_squares(numbers, weights)
     
